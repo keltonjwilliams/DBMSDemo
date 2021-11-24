@@ -8,12 +8,12 @@ package DBMSDemo;
  *
  * @author kelto
  */
-public class FormLogin extends javax.swing.JInternalFrame {
+public class FormViewCelestialObject extends javax.swing.JInternalFrame {
 
     /**
-     * Creates new form FormLogin
+     * Creates new form ViewCelestialObject
      */
-    public FormLogin() {
+    public FormViewCelestialObject() {
         initComponents();
     }
 
@@ -28,7 +28,7 @@ public class FormLogin extends javax.swing.JInternalFrame {
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Login");
+        setTitle("Add Celestial Object");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

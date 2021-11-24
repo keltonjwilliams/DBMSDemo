@@ -4,6 +4,8 @@
  */
 package util;
 
+import bo.Star;
+
 
 
 /**
@@ -11,6 +13,6 @@ package util;
  * @author kelto
  */
 public class GlobalData {
-    
+    public static Star star = null;
     
 }
