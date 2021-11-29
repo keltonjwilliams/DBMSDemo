@@ -1,5 +1,7 @@
 package bo;
 
+import java.util.Vector;
+
 public class Star {
     private int oID;
     private double temperature;
@@ -9,6 +11,14 @@ public class Star {
         this.oID = oID;
         this.temperature = temperature;
         this.MSID = MSID;
+    }
+    
+    public Vector getRow(){
+        Vector vector = new Vector();
+        vector.add(oID);
+        vector.add(temperature);
+        vector.add(MSID);
+        return vector; 
     }
     
     public int getoID() {

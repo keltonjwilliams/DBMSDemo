@@ -21,9 +21,9 @@ public class SQLUtil {
     private Statement stm;
 
     public SQLUtil() {
-        String url = "jdbc:mtsql://localhost:3336";
+        String url = "jdbc:mysql://localhost:3306/demo";
         String username = "root";
-        String password = "root";
+        String password = "password";
         
         try {
             con = DriverManager.getConnection(url, username, password);
