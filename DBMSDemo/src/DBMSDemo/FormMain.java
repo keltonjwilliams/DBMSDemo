@@ -25,10 +25,6 @@ public class FormMain extends javax.swing.JFrame {
     FormLogin formLogin = new FormLogin();
     FormAddCelestialObject formAddco = new FormAddCelestialObject();
     FormViewCelestialObject formViewco = new FormViewCelestialObject();
-    FormViewConstellation formViewConstellation = new FormViewConstellation();
-    FormViewMainSeq formViewMainSeq = new FormViewMainSeq();
-    FormViewSpaceObject formViewSpaceObject = new FormViewSpaceObject();
-    FormViewStar formViewStar = new FormViewStar();
     Map<String, JInternalFrame> forms =  new HashMap<>();
             
     
@@ -37,10 +33,6 @@ public class FormMain extends javax.swing.JFrame {
         forms.put("formLogin", formLogin);
         forms.put("formAddCO", formAddco);
         forms.put("formViewCO", formViewco);
-        forms.put("formViewConstellation", formViewConstellation);
-        forms.put("formViewMainSeq", formViewMainSeq);
-        forms.put("formViewSpaceObject", formViewSpaceObject);
-        forms.put("formViewStar", formViewStar);
         
         forms.values().forEach((form) -> {
             jdpContainer.add(form);
@@ -52,7 +44,7 @@ public class FormMain extends javax.swing.JFrame {
     }
     
     private void showForm(String formName, boolean checkLogin) {
-        if (checkLogin && GlobalData.star == null) {
+        if (checkLogin && GlobalData.stf == null) {
             showForm("FormLogin", false);
         } else {
             try {
@@ -173,11 +165,6 @@ public class FormMain extends javax.swing.JFrame {
         mniCO.add(mniUpdateCO);
 
         mniDeleteCO.setText("Delete");
-        mniDeleteCO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDeleteCOActionPerformed(evt);
-            }
-        });
         mniCO.add(mniDeleteCO);
 
         mniViewCO.setText("View");
@@ -209,19 +196,9 @@ public class FormMain extends javax.swing.JFrame {
         mniC.add(mniUpdateC);
 
         mniDeleteC.setText("Delete");
-        mniDeleteC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDeleteCActionPerformed(evt);
-            }
-        });
         mniC.add(mniDeleteC);
 
         mniViewC.setText("View");
-        mniViewC.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniViewCActionPerformed(evt);
-            }
-        });
         mniC.add(mniViewC);
 
         mnuManage.add(mniC);
@@ -240,19 +217,9 @@ public class FormMain extends javax.swing.JFrame {
         mniMS.add(mniUpdateCO2);
 
         mniDeleteCO2.setText("Delete");
-        mniDeleteCO2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDeleteCO2ActionPerformed(evt);
-            }
-        });
         mniMS.add(mniDeleteCO2);
 
         jMenuItem3.setText("View");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
-            }
-        });
         mniMS.add(jMenuItem3);
 
         mnuManage.add(mniMS);
@@ -271,19 +238,9 @@ public class FormMain extends javax.swing.JFrame {
         mniSO.add(mniUpdateCO3);
 
         mniDeleteCO3.setText("Delete");
-        mniDeleteCO3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDeleteCO3ActionPerformed(evt);
-            }
-        });
         mniSO.add(mniDeleteCO3);
 
         jMenuItem4.setText("View");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
         mniSO.add(jMenuItem4);
 
         mnuManage.add(mniSO);
@@ -302,19 +259,9 @@ public class FormMain extends javax.swing.JFrame {
         mniS.add(mniUpdateCO4);
 
         mniDeleteCO4.setText("Delete");
-        mniDeleteCO4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniDeleteCO4ActionPerformed(evt);
-            }
-        });
         mniS.add(mniDeleteCO4);
 
         jMenuItem5.setText("View");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
         mniS.add(jMenuItem5);
 
         mnuManage.add(mniS);
@@ -331,23 +278,23 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mniLoginActionPerformed
 
     private void mniUpdateCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCOActionPerformed
-        showForm("formViewCO");
+        // TODO add your handling code here:
     }//GEN-LAST:event_mniUpdateCOActionPerformed
 
     private void mniUpdateCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCActionPerformed
-        showForm("formViewConstellation");
+        // TODO add your handling code here:
     }//GEN-LAST:event_mniUpdateCActionPerformed
 
     private void mniUpdateCO2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO2ActionPerformed
-        showForm("formViewMainSeq");
+        // TODO add your handling code here:
     }//GEN-LAST:event_mniUpdateCO2ActionPerformed
 
     private void mniUpdateCO3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO3ActionPerformed
-        showForm("formViewSpaceObject");
+        // TODO add your handling code here:
     }//GEN-LAST:event_mniUpdateCO3ActionPerformed
 
     private void mniUpdateCO4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO4ActionPerformed
-        showForm("formViewStar");
+        // TODO add your handling code here:
     }//GEN-LAST:event_mniUpdateCO4ActionPerformed
 
     private void mniAddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddCActionPerformed
@@ -355,49 +302,12 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mniAddCActionPerformed
 
     private void mniAddCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddCOActionPerformed
-        showForm("formAddCO");
+        showForm("formAddCO", false);
     }//GEN-LAST:event_mniAddCOActionPerformed
 
     private void mniViewCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewCOActionPerformed
-        showForm("formViewCO");
+        showForm("formViewCO", false);
     }//GEN-LAST:event_mniViewCOActionPerformed
-
-    private void mniDeleteCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteCOActionPerformed
-        showForm("formViewCO");
-    }//GEN-LAST:event_mniDeleteCOActionPerformed
-
-    private void mniViewCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewCActionPerformed
-        // TODO add your handling code here:
-        showForm("formViewConstellation");
-    }//GEN-LAST:event_mniViewCActionPerformed
-
-    private void mniDeleteCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteCActionPerformed
-        showForm("formViewConstellation");
-    }//GEN-LAST:event_mniDeleteCActionPerformed
-
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        showForm("formViewMainSeq");
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
-
-    private void mniDeleteCO2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteCO2ActionPerformed
-        showForm("formViewMainSeq");
-    }//GEN-LAST:event_mniDeleteCO2ActionPerformed
-
-    private void mniDeleteCO3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteCO3ActionPerformed
-        showForm("formViewSpaceObject");
-    }//GEN-LAST:event_mniDeleteCO3ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        showForm("formViewSpaceObject");
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void mniDeleteCO4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniDeleteCO4ActionPerformed
-        showForm("formViewStar");
-    }//GEN-LAST:event_mniDeleteCO4ActionPerformed
-
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        showForm("formViewStar");
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
     
     // End of variables declaration                   
     /**

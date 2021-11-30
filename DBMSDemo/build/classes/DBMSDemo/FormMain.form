@@ -59,9 +59,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteCOActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mniViewCO">
                   <Properties>
@@ -98,17 +95,11 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteCActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mniViewC">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniViewCActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -134,17 +125,11 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteCO2ActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem3ActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -170,17 +155,11 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteCO3ActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem4ActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -206,17 +185,11 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Delete"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mniDeleteCO4ActionPerformed"/>
-                  </Events>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="jMenuItem5">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="View"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem5ActionPerformed"/>
-                  </Events>
                 </MenuItem>
               </SubComponents>
             </Menu>

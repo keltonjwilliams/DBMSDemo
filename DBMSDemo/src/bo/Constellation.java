@@ -1,47 +1,53 @@
 package bo;
 
-import java.util.Vector;
-
 public class Constellation {
 
+    private String cID;
     private String cName;
-    private int starCount;
-    private int cID;
-    private int area;
+    private String area;
     private String symbol;
-    private String starList;
 
-    public Constellation(String cName, int starCount, int cID, int area, String symbol, String starList) {
-        this.cName = cName;
-        this.starCount = starCount;
+    public Constellation(String cID, String cName, String area, String symbol) {
         this.cID = cID;
+        this.cName = cName;
         this.area = area;
         this.symbol = symbol;
-        this.starList = starList;
     }
     
-    public Vector getRow(){
-        Vector vector = new Vector();
-        vector.add(cID);
-        vector.add(cName);
-        vector.add(area);
-        vector.add(symbol);
-        return vector; 
+    public String getcID() {
+        return cID;
     }
     
-    public int getID(){
-        return this.cID;
+    public void setcID(String cID) {
+        this.cID = cID;
     }
     
-    public String getName(){
-        return this.cName;
+    public String getcName() {
+        return cName;
     }
     
-    public int getArea(){
-        return this.area;
+    public void setcName(String cName) {
+        this.cName = cName;
     }
     
-    public String getSymbol(){
-        return this.symbol;
+    public String getarea() {
+        return area;
+    }
+    
+    public void setarea(String area) {
+        this.area = area;
+    }
+    
+    public String getsymbol() {
+        return symbol;
+    }
+    
+    public void setsymbol(String symbol) {
+        this.symbol = symbol;
+    }
+    
+    @Override
+    public String toString() {
+        return getcName();
     }
 }

@@ -4,6 +4,15 @@
  */
 package DBMSDemo;
 
+import bo.Constellation;
+import dao.CelestialObjectHandler;
+import dao.ConstellationHandler;
+import java.util.List;
+import javax.swing.ComboBoxModel;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import util.GlobalData;
+
 /**
  *
  * @author kelto
@@ -13,8 +22,16 @@ public class FormAddCelestialObject extends javax.swing.JInternalFrame {
     /**
      * Creates new form AddCelestialObject
      */
+    
+    private void populateConstellations() {
+        List<Constellation> constellations = new ConstellationHandler().getConstellations();
+        ComboBoxModel cbxModel = new DefaultComboBoxModel(constellations.toArray());
+        cbxConstellation.setModel(cbxModel);
+    }
+    
     public FormAddCelestialObject() {
         initComponents();
+        populateConstellations();
     }
 
     /**
@@ -26,25 +43,151 @@ public class FormAddCelestialObject extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtoID = new javax.swing.JTextField();
+        txtoType = new javax.swing.JTextField();
+        txtDesignation = new javax.swing.JTextField();
+        btnAdd = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        cbxConstellation = new javax.swing.JComboBox<>();
+
         setClosable(true);
         setIconifiable(true);
         setTitle("Add Celestial Object");
+
+        jLabel1.setText("oID");
+
+        jLabel2.setText("oType");
+
+        jLabel3.setText("Designation");
+
+        txtoType.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtoTypeActionPerformed(evt);
+            }
+        });
+
+        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDesignationActionPerformed(evt);
+            }
+        });
+
+        btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setText("Constellation");
+
+        cbxConstellation.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbxConstellation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxConstellationActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAdd))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbxConstellation, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(txtoID)
+                                    .addComponent(txtoType, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(33, 33, 33))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtoID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtoType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(cbxConstellation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnAdd)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDesignationActionPerformed
+
+    private void txtoTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtoTypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtoTypeActionPerformed
+
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        String oID = txtoID.getText();
+        String oType = txtoType.getText();
+        String designation = txtDesignation.getText();
+        Constellation co = (Constellation)cbxConstellation.getSelectedItem();
+        String cID = co.getcID();
+        int sID = GlobalData.stf.getsID();
+        int ret = new CelestialObjectHandler().addCelestialObject(oID, oType, designation);
+        if (ret == -1) {
+            JOptionPane.showMessageDialog(this, "Failed to add CelestialObject");
+        } else {
+            txtoID.setText(null);
+            txtoType.setText(null);
+            txtDesignation.setText(null);
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+
+    private void cbxConstellationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxConstellationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxConstellationActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JComboBox<String> cbxConstellation;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField txtDesignation;
+    private javax.swing.JTextField txtoID;
+    private javax.swing.JTextField txtoType;
     // End of variables declaration//GEN-END:variables
 }

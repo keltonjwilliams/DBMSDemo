@@ -4,11 +4,6 @@
  */
 package DBMSDemo;
 
-import bo.CelestialObject;
-import dao.COHandler;
-import java.util.List;
-import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author kelto
@@ -18,35 +13,8 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
     /**
      * Creates new form ViewCelestialObject
      */
-    private COHandler coHandler = new COHandler();
-    
-    private void refreshTableCO(){
-        populateCO();
-    }
-    
-    List<CelestialObject> celestialObjects;
-    
-    private void populateCO(){
-        String keyword = txtCO.getText();
-        celestialObjects = coHandler.loadCelestialObjects(keyword);
-        String columns[] = new String[] {"oID","oType","Designation","Magnitude"};
-        DefaultTableModel tblModel = new DefaultTableModel(columns, 0){
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-        };
-        
-        celestialObjects.forEach((cObject)->{
-            //convert into a row and add
-            tblModel.addRow(cObject.getRow());
-            refreshTableCO();
-        });
-    }
-    
     public FormViewCelestialObject() {
         initComponents();
-        populateCO();
     }
 
     /**
@@ -58,158 +26,25 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblCO = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
-        txtCO = new javax.swing.JTextField();
-        btnSearch = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
-        setTitle("Add Celestial Object");
-
-        tblCO.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblCO.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCOMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblCO);
-
-        jLabel1.setText("Search");
-
-        txtCO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCOActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setText("Search");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setText("Delete");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
+        setTitle("View Celestial Object");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 470, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnDelete))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(btnRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(4, 4, 4)
-                        .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnSearch)))
-                .addContainerGap())
+            .addGap(0, 394, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(44, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSearch)
-                    .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(btnRefresh))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDelete)
-                .addGap(23, 23, 23))
+            .addGap(0, 274, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCOActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        populateCO();
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        //get the selected row
-        int selectedRow = tblCO.getSelectedRow();
-        if(selectedRow != -1){
-            //perform the delete
-            int cID = (int) tblCO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting celestial object id %d", cID));
-            if (ret == JOptionPane.OK_OPTION){
-                coHandler.deleteCO(cID);
-                refreshTableCO();
-            }
-        }else{
-            JOptionPane.showMessageDialog(this, "Please select a row to delete!");
-        }
-    }//GEN-LAST:event_btnDeleteActionPerformed
-
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        refreshTableCO();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void tblCOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCOMouseClicked
-        // if it is double clicked
-        if(evt.getClickCount() == 2){
-            //get the selected row
-            CelestialObject celestialObject = celestialObjects.get(tblCO.getSelectedRow());
-            //show form
-            FormUpdateCelestialObject formUpdateCelestialObjects = new FormUpdateCelestialObject(null, true);
-            formUpdateCelestialObjects.setCelestialObject(celestialObject);
-            formUpdateCelestialObjects.setVisible(true);
-            
-            if(formUpdateCelestialObjects.getReturnStatus() == FormUpdateCelestialObject.RET_OK){
-                //refresh table
-                refreshTableCO();
-            }
-        }
-    }//GEN-LAST:event_tblCOMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton btnSearch;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCO;
-    private javax.swing.JTextField txtCO;
     // End of variables declaration//GEN-END:variables
 }
