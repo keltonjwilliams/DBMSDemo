@@ -3,17 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/CelestialObject.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/DBMSDemo/FormLogin.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/SpaceObject.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/util/SQLUtil.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/Seasons.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/Constellation.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/util/GlobalData.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/Star.java</file>
-            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/bo/MainSeq.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/SpaceObjectHandler.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/StarHandler.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/SeasonHandler.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/CelestialObjectHandler.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/DBMSDemo/FormAddStar.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/StaffHandler.java</file>
             <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/DBMSDemo/FormMain.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/MainSeqHandler.java</file>
             <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/dao/ConstellationHandler.java</file>
+            <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/DBMSDemo/FormViewMainSeq.java</file>
             <file>file:/C:/Users/kelto/Documents/NetBeansProjects/DBMSDemo/src/DBMSDemo/FormAddCelestialObject.java</file>
         </group>
     </open-files>
