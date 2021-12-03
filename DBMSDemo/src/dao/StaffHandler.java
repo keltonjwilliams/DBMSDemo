@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import util.SQLUtil;
+import util.PasswordEncryptor;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -26,6 +27,7 @@ public class StaffHandler {
     
     public Staff login(String username, String password) {
         Staff stf = null;
+        password = PasswordEncryptor.encryptPassword(password);
         try {
             String cmd = String.format("select sID, sName from Staff where username = '%s' and password = '%s'", username, password);
             ResultSet rs = sqlUtil.executeQuery(cmd);
