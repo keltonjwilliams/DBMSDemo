@@ -40,11 +40,11 @@
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="txtType" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txtName" alignment="0" max="32767" attributes="0"/>
                       <Component id="txtDesignation" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txtMagnitude" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
+                      <Component id="txtcID" alignment="0" min="-2" pref="229" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="22" max="32767" attributes="0"/>
+                  <EmptySpace pref="43" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -64,7 +64,7 @@
                   <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtType" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtName" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -74,7 +74,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtMagnitude" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtcID" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
@@ -104,10 +104,10 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Name"/>
+        <Property name="text" type="java.lang.String" value="Star Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtType">
+    <Component class="javax.swing.JTextField" name="txtName">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -124,7 +124,7 @@
         <Property name="text" type="java.lang.String" value="cID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtMagnitude">
+    <Component class="javax.swing.JTextField" name="txtcID">
     </Component>
   </SubComponents>
 </Form>

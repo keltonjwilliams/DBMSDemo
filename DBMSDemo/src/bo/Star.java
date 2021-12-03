@@ -1,37 +1,47 @@
 package bo;
 
+import java.util.Vector;
+
 public class Star {
-    private int oID;
-    private double temperature;
-    private int MSID;
+    private String oID;
+    private int temperature;
+    private String MSID;
     
-    public Star(int oID, double temperature, int MSID) {
+    public Star(String oID, int temperature, String MSID) {
         this.oID = oID;
         this.temperature = temperature;
         this.MSID = MSID;
     }
     
-    public int getoID() {
+    public Vector getRow() {
+        Vector v = new Vector();
+        v.add(oID);
+        v.add(temperature);
+        v.add(MSID);
+        return v;
+    }
+    
+    public String getoID() {
         return oID;
     }
     
-    public void setoID(int oID) {
+    public void setoID(String oID) {
         this.oID = oID;
     }
     
-    public double gettemperature() {
+    public int gettemperature() {
         return temperature;
     }
     
-    public void settemperature(double temperature) {
+    public void settemperature(int temperature) {
         this.temperature = temperature;
     }
     
-    public int getMSID() {
+    public String getMSID() {
         return MSID;
     }
     
-    public void setMSID(int MSID) {
+    public void setMSID(String MSID) {
         this.MSID = MSID;
     }
 }

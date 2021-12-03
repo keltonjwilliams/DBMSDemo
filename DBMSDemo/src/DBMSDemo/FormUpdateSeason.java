@@ -4,8 +4,8 @@
  */
 package DBMSDemo;
 
-import bo.Constellation;
-import dao.ConstellationHandler;
+import bo.Season;
+import dao.SeasonHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -19,7 +19,7 @@ import javax.swing.KeyStroke;
  *
  * @author upadhyaya
  */
-public class FormUpdateConstellation extends javax.swing.JDialog {
+public class FormUpdateSeason extends javax.swing.JDialog {
 
     /**
      * A return status code - returned if Cancel button has been pressed
@@ -30,20 +30,19 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
      */
     public static final int RET_OK = 1;
     
-    private Constellation constellation;
-    public void setConstellation(Constellation constellation){
-        this.constellation = constellation;
+    private Season season;
+    public void setSeason(Season season){
+        this.season = season;
         //load the data to form
-        txtName.setText(String.valueOf(constellation.getcName()));
-        txtArea.setText(String.valueOf(constellation.getarea()));
-        txtSymbol.setText(String.valueOf(constellation.getsymbol()));
+        txtSeasonType.setText(String.valueOf(season.getSeasonType()));
+        txtcID.setText(String.valueOf(season.getcID()));
         
     }
 
     /**
      * Creates new form FormUpdateConstellation
      */
-    public FormUpdateConstellation(java.awt.Frame parent, boolean modal) {
+    public FormUpdateSeason(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -77,14 +76,11 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
 
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        txtName = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtArea = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtSymbol = new javax.swing.JTextField();
+        txtcID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        txtSeasonType = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
-        setTitle("Update Constellation");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
@@ -105,23 +101,21 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
             }
         });
 
-        txtName.addActionListener(new java.awt.event.ActionListener() {
+        txtcID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNameActionPerformed(evt);
+                txtcIDActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Area");
+        jLabel1.setText("cID");
 
-        txtArea.addActionListener(new java.awt.event.ActionListener() {
+        txtSeasonType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAreaActionPerformed(evt);
+                txtSeasonTypeActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Symbol");
-
-        jLabel1.setText("Name");
+        jLabel4.setText("seasonType");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,18 +127,18 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSeasonType, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(75, 75, 75))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(29, 29, 29)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1)
-                        .addComponent(jLabel3))
-                    .addGap(30, 30, 30)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtName)
-                        .addComponent(txtArea)
-                        .addComponent(txtSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1)
+                    .addGap(48, 48, 48)
+                    .addComponent(txtcID, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(64, Short.MAX_VALUE)))
         );
 
@@ -153,7 +147,11 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtSeasonType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
@@ -163,16 +161,8 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
                     .addGap(82, 82, 82)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel3)
-                        .addComponent(txtSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(83, Short.MAX_VALUE)))
+                        .addComponent(txtcID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(54, Short.MAX_VALUE)))
         );
 
         getRootPane().setDefaultButton(okButton);
@@ -181,11 +171,9 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        String cID = constellation.getcID();
-        String cName = txtName.getText();
-        String area = txtArea.getText();
-        String symbol = txtSymbol.getText();
-        int ret = new ConstellationHandler().updateConstellation(cID, cName, area, symbol);
+        String cID = season.getcID();
+        String seasonType  = txtSeasonType.getText();
+        int ret = new SeasonHandler().updateSeason(seasonType, cID);
         if(ret != -1){
             doClose(RET_OK);
         }else{
@@ -205,13 +193,13 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void txtAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAreaActionPerformed
+    private void txtSeasonTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSeasonTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtAreaActionPerformed
+    }//GEN-LAST:event_txtSeasonTypeActionPerformed
 
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+    private void txtcIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
+    }//GEN-LAST:event_txtcIDActionPerformed
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -223,12 +211,10 @@ public class FormUpdateConstellation extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton okButton;
-    private javax.swing.JTextField txtArea;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JTextField txtSymbol;
+    private javax.swing.JTextField txtSeasonType;
+    private javax.swing.JTextField txtcID;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;

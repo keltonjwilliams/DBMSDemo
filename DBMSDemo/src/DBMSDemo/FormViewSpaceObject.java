@@ -38,8 +38,8 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
         spaceObjects.forEach((spaceObject)->{
             //convert into a row and add
             tblModel.addRow(spaceObject.getRow());
-            refreshTableSpaceObject();
         });
+        tblSO.setModel(tblModel);
     }
 
     /**
@@ -63,9 +63,13 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCO = new javax.swing.JTable();
+        tblSO = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtCO = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("View Space Objects");
 
         btnSearch.setText("Search");
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +92,7 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
             }
         });
 
-        tblCO.setModel(new javax.swing.table.DefaultTableModel(
+        tblSO.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -99,12 +103,12 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblCO.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblSO.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCOMouseClicked(evt);
+                tblSOMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblCO);
+        jScrollPane1.setViewportView(tblSO);
 
         jLabel1.setText("Search");
 
@@ -160,14 +164,13 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         //get the selected row
-        int selectedRow = tblCO.getSelectedRow();
+        int selectedRow = tblSO.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            int cID = (int) tblCO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting space object id %d", cID));
+            String cID = (String) tblSO.getValueAt(selectedRow, 0);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting space object id %s", cID));
             if (ret == JOptionPane.OK_OPTION){
                 cHandler.deleteSpaceObject(cID);
-                refreshTableSpaceObject();
             }
         }else{
             JOptionPane.showMessageDialog(this, "Please select a row to delete!");
@@ -178,11 +181,11 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
         refreshTableSpaceObject();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void tblCOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCOMouseClicked
+    private void tblSOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSOMouseClicked
         // if it is double clicked
         if(evt.getClickCount() == 2){
             //get the selected row
-            SpaceObject spaceObject = spaceObjects.get(tblCO.getSelectedRow());
+            SpaceObject spaceObject = spaceObjects.get(tblSO.getSelectedRow());
             //show form
             FormUpdateSpaceObject formUpdateSpaceObjects = new FormUpdateSpaceObject(null, true);
             formUpdateSpaceObjects.setSpaceObject(spaceObject);
@@ -193,7 +196,7 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
                 refreshTableSpaceObject();
             }
         }
-    }//GEN-LAST:event_tblCOMouseClicked
+    }//GEN-LAST:event_tblSOMouseClicked
 
     private void txtCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCOActionPerformed
         // TODO add your handling code here:
@@ -206,7 +209,7 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCO;
+    private javax.swing.JTable tblSO;
     private javax.swing.JTextField txtCO;
     // End of variables declaration//GEN-END:variables
 }

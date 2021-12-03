@@ -4,8 +4,8 @@
  */
 package DBMSDemo;
 
-import bo.MainSeq;
-import dao.MainSeqHandler;
+import bo.Season;
+import dao.SeasonHandler;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -14,20 +14,21 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author upadhyaya
  */
-public class FormViewMainSeq extends javax.swing.JInternalFrame {
+public class FormViewSeason extends javax.swing.JInternalFrame {
+
+    private SeasonHandler sh = new SeasonHandler();
     
-    private MainSeqHandler msh = new MainSeqHandler();
-    
-    private void refreshTableMainSeq(){
-        populateMainSeq();
+    private void refreshTableConstellation(){
+        populateConstellation();
     }
     
-    List<MainSeq> mainSeqs;
+    List<Season> seasons;
     
-        private void populateMainSeq(){
-        String keyword = txtCO.getText();
-        mainSeqs = msh.loadMainSeq(keyword);
-        String columns[] = new String[] {"MSID","Age","SpectralType"};
+    private void populateConstellation(){
+        String keyword = txtKeyword.getText();
+        
+        seasons = sh.loadSeason(keyword);
+        String columns[] = new String[] {"seasonType","cID"};
         DefaultTableModel tblModel = new DefaultTableModel(columns, 0){
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -35,19 +36,18 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
             }
         };
         
-        mainSeqs.forEach((constellation)->{
+        seasons.forEach((season)->{
             //convert into a row and add
-            tblModel.addRow(constellation.getRow());
+            tblModel.addRow(season.getRow());
         });
-        tblMS.setModel(tblModel);
+        tblSeason.setModel(tblModel);
     }
-
     /**
-     * Creates new form FormViewMainSeq
+     * Creates new form FormViewConstellation
      */
-    public FormViewMainSeq() {
+    public FormViewSeason() {
         initComponents();
-        populateMainSeq();
+        populateConstellation();
     }
 
     /**
@@ -59,41 +59,36 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblMS = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtCO = new javax.swing.JTextField();
+        txtKeyword = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblSeason = new javax.swing.JTable();
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("View Main Sequence");
-
-        tblMS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        tblMS.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblMSMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblMS);
+        setTitle("View Seasons");
+        setToolTipText("");
 
         jLabel1.setText("Search");
 
-        txtCO.addActionListener(new java.awt.event.ActionListener() {
+        txtKeyword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCOActionPerformed(evt);
+                txtKeywordActionPerformed(evt);
             }
         });
 
@@ -118,13 +113,32 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
             }
         });
 
+        tblSeason.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblSeason.setToolTipText("");
+        tblSeason.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSeasonMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblSeason);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 550, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 536, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnDelete))
@@ -134,7 +148,7 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(4, 4, 4)
-                        .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearch)))
                 .addContainerGap())
@@ -145,7 +159,7 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(btnRefresh))
                 .addGap(18, 18, 18)
@@ -158,41 +172,24 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblMSMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblMSMouseClicked
-        // if it is double clicked
-        if(evt.getClickCount() == 2){
-            //get the selected row
-            MainSeq mainSeq = mainSeqs.get(tblMS.getSelectedRow());
-            //show form
-            FormUpdateMainSeq formUpdateMainSeqs = new FormUpdateMainSeq(null, true);
-            formUpdateMainSeqs.setMainSeq(mainSeq);
-            formUpdateMainSeqs.setVisible(true);
-
-            if(formUpdateMainSeqs.getReturnStatus() == FormUpdateMainSeq.RET_OK){
-                //refresh table
-                refreshTableMainSeq();
-            }
-        }
-    }//GEN-LAST:event_tblMSMouseClicked
-
-    private void txtCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCOActionPerformed
+    private void txtKeywordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKeywordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCOActionPerformed
+    }//GEN-LAST:event_txtKeywordActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        populateMainSeq();
+        populateConstellation();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         //get the selected row
-        int selectedRow = tblMS.getSelectedRow();
+        int selectedRow = tblSeason.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            String MSID = (String) tblMS.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting MainSeq id %s", MSID));
+            String cID = (String) tblSeason.getValueAt(selectedRow, 1);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting season id %s", cID));
             if (ret == JOptionPane.OK_OPTION){
-                msh.deleteMainSeq(MSID);
-                refreshTableMainSeq();
+                sh.deleteSeason(cID);
+                refreshTableConstellation();
             }
         }else{
             JOptionPane.showMessageDialog(this, "Please select a row to delete!");
@@ -200,8 +197,25 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        refreshTableMainSeq();
+        refreshTableConstellation();
     }//GEN-LAST:event_btnRefreshActionPerformed
+
+    private void tblSeasonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSeasonMouseClicked
+        // if it is double clicked
+        if(evt.getClickCount() == 2){
+            //get the selected row
+            Season season = seasons.get(tblSeason.getSelectedRow());
+            //show form
+                        FormUpdateSeason formUpdateSeason = new FormUpdateSeason(null, true);
+                        formUpdateSeason.setSeason(season);
+                        formUpdateSeason.setVisible(true);
+
+                        if(formUpdateSeason.getReturnStatus() == FormUpdateConstellation.RET_OK){
+                                //refresh table
+                                refreshTableConstellation();
+                            }
+        }
+    }//GEN-LAST:event_tblSeasonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -209,8 +223,9 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblMS;
-    private javax.swing.JTextField txtCO;
+    private javax.swing.JTable tblSeason;
+    private javax.swing.JTextField txtKeyword;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,9 +4,7 @@
  */
 package DBMSDemo;
 
-import static DBMSDemo.FormUpdateMainSeq.RET_OK;
 import bo.Star;
-import dao.MainSeqHandler;
 import dao.StarHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -32,12 +30,12 @@ public class FormUpdateStar extends javax.swing.JDialog {
      */
     public static final int RET_OK = 1;
     
-    private Star mainSeq;
-    public void setStar(Star mainSeq){
-        this.mainSeq = mainSeq;
+    private Star star;
+    public void setStar(Star star){
+        this.star = star;
         //load the data to form
-        txtType.setText(String.valueOf(mainSeq.gettemperature()));
-        txtDesignation.setText(String.valueOf(mainSeq.getMSID()));
+        txtTemp.setText(String.valueOf(star.gettemperature()));
+        txtMSID.setText(String.valueOf(star.getMSID()));
     }
 
     /**
@@ -77,11 +75,12 @@ public class FormUpdateStar extends javax.swing.JDialog {
 
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        txtType = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtDesignation = new javax.swing.JTextField();
+        txtTemp = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtMSID = new javax.swing.JTextField();
 
+        setTitle("Update Star");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
@@ -102,36 +101,44 @@ public class FormUpdateStar extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("cID");
-
-        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
+        txtTemp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDesignationActionPerformed(evt);
+                txtTempActionPerformed(evt);
             }
         });
 
         jLabel1.setText("Temperature");
+
+        jLabel3.setText("MSID");
+
+        txtMSID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMSIDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(txtMSID, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(28, 28, 28)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jLabel1))
+                    .addComponent(jLabel1)
                     .addGap(40, 40, 40)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtType, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                        .addComponent(txtDesignation))
+                    .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(28, Short.MAX_VALUE)))
         );
 
@@ -140,7 +147,11 @@ public class FormUpdateStar extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(266, Short.MAX_VALUE)
+                .addContainerGap(149, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtMSID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
@@ -150,12 +161,8 @@ public class FormUpdateStar extends javax.swing.JDialog {
                     .addGap(109, 109, 109)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(109, Short.MAX_VALUE)))
+                        .addComponent(txtTemp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(171, Short.MAX_VALUE)))
         );
 
         getRootPane().setDefaultButton(okButton);
@@ -164,10 +171,10 @@ public class FormUpdateStar extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        int oID = mainSeq.getoID();
-        double temperature = Float.parseFloat(txtType.getText());
-        int MSID = Integer.parseInt(txtDesignation.getText());
-        int ret = new StarHandler().updateStar(MSID, temperature, MSID);
+        String oID = star.getoID();
+        int temperature = Integer.parseInt(txtTemp.getText());
+        String MSID = txtMSID.getText();
+        int ret = new StarHandler().updateStar(oID, temperature, MSID);
         if(ret != -1){
             doClose(RET_OK);
         }else{
@@ -187,9 +194,13 @@ public class FormUpdateStar extends javax.swing.JDialog {
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
+    private void txtMSIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMSIDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDesignationActionPerformed
+    }//GEN-LAST:event_txtMSIDActionPerformed
+
+    private void txtTempActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTempActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTempActionPerformed
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -200,10 +211,10 @@ public class FormUpdateStar extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JButton okButton;
-    private javax.swing.JTextField txtDesignation;
-    private javax.swing.JTextField txtType;
+    private javax.swing.JTextField txtMSID;
+    private javax.swing.JTextField txtTemp;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;

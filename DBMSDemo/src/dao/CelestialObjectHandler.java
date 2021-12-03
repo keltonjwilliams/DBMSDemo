@@ -26,7 +26,7 @@ public class CelestialObjectHandler {
     
     public List<CelestialObject> getCelestialObjects() {
         List<CelestialObject> result = new ArrayList<>();
-        String cmd = "select oID, oType, designation from CelestialObject;";
+        String cmd = "select spaceobject.oID, oType, Designation from CelestialObject left join SpaceObject on CelestialObject.oID = SpaceObject.oID;";
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {
             while (rs.next()) {
@@ -48,17 +48,30 @@ public class CelestialObjectHandler {
         return sqlUtil.executeUpdate(cmd);
     }
     
+    public int deleteCelestialObject(String oID){
+        String cmdTemplate = "delete from CelestialObject where oID = '%s;'";
+        String cmd = String.format(cmdTemplate, oID);
+        return sqlUtil.executeUpdate(cmd);
+    }
+    
+    public int updateCelestialObject(String oID, String oType, String designation){
+        String cmdTemplate = "update CelestialObject set oType='%s', designation='%s' where oID = '%s';";
+        String cmd = String.format(cmdTemplate, oType, designation, oID);
+        return sqlUtil.executeUpdate(cmd);
+    }
+    
     public List<CelestialObject> loadCelestialObjects(String keyword) {
         List<CelestialObject> co = new ArrayList<>();
-        String cmdTemplate = "select oID, oType, designation from CelestialObjects where oID like '%s'";
+        String cmdTemplate = "select oID, oType, designation from CelestialObject where oID like '%s'";
         String cmd = String.format(cmdTemplate, "%" + keyword + "%");
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {
             while (rs.next()) {
-                String oID = rs.getString("sID");
+                String oID = rs.getString("oID");
                 String oType = rs.getString("oType");
                 String designation = rs.getString("designation");
-                
+                CelestialObject c = new CelestialObject(oID, oType, designation);
+                co.add(c);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CelestialObjectHandler.class.getName()).log(Level.SEVERE, null, ex);

@@ -34,8 +34,9 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
     public void setMainSeq(MainSeq mainSeq){
         this.mainSeq = mainSeq;
         //load the data to form
-        txtType.setText(String.valueOf(mainSeq.getAge()));
-        txtDesignation.setText(String.valueOf(mainSeq.getSpectralType()));
+        txtMSID.setText(String.valueOf(mainSeq.getMSID()));
+        txtlyDistance.setText(String.valueOf(mainSeq.getLyDistance()));
+        txtSpectralType.setText(String.valueOf(mainSeq.getSpectralType()));
     }
 
     /**
@@ -73,12 +74,17 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        txtType = new javax.swing.JTextField();
+        txtlyDistance = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtDesignation = new javax.swing.JTextField();
+        txtSpectralType = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtMSID = new javax.swing.JTextField();
+
+        jLabel3.setText("MSID");
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -102,13 +108,21 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
 
         jLabel2.setText("SpectralType");
 
-        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
+        txtSpectralType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDesignationActionPerformed(evt);
+                txtSpectralTypeActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Age");
+        jLabel1.setText("lyDistance");
+
+        jLabel4.setText("MSID");
+
+        txtMSID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMSIDActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +134,12 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addComponent(jLabel4)
+                .addGap(75, 75, 75)
+                .addComponent(txtMSID, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(46, 46, 46)
@@ -128,8 +148,8 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
                         .addComponent(jLabel1))
                     .addGap(40, 40, 40)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtType, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                        .addComponent(txtDesignation))
+                        .addComponent(txtlyDistance, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                        .addComponent(txtSpectralType))
                     .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
@@ -138,7 +158,11 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(214, Short.MAX_VALUE)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(txtMSID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cancelButton)
                     .addComponent(okButton))
@@ -148,11 +172,11 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
                     .addGap(82, 82, 82)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtlyDistance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtSpectralType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(84, Short.MAX_VALUE)))
         );
 
@@ -162,9 +186,9 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        int MSID = mainSeq.getID();
-        double age = Float.parseFloat(txtType.getName());
-        String spectralType = (txtDesignation.getText());
+        String MSID = mainSeq.getMSID();
+        double age = Float.parseFloat(txtlyDistance.getText());
+        String spectralType = (txtSpectralType.getText());
         int ret = new MainSeqHandler().updateMainSeq(MSID, age, spectralType);
         if(ret != -1){
             doClose(RET_OK);
@@ -185,9 +209,13 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
+    private void txtSpectralTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSpectralTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDesignationActionPerformed
+    }//GEN-LAST:event_txtSpectralTypeActionPerformed
+
+    private void txtMSIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMSIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMSIDActionPerformed
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -199,9 +227,12 @@ public class FormUpdateMainSeq extends javax.swing.JDialog {
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JButton okButton;
-    private javax.swing.JTextField txtDesignation;
-    private javax.swing.JTextField txtType;
+    private javax.swing.JTextField txtMSID;
+    private javax.swing.JTextField txtSpectralType;
+    private javax.swing.JTextField txtlyDistance;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;

@@ -4,9 +4,7 @@
  */
 package DBMSDemo;
 
-import static DBMSDemo.FormUpdateConstellation.RET_OK;
 import bo.SpaceObject;
-import dao.ConstellationHandler;
 import dao.SpaceObjectHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -36,9 +34,9 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
     public void setSpaceObject(SpaceObject spaceObject){
         this.spaceObject = spaceObject;
         //load the data to form
-        txtType.setText(String.valueOf(spaceObject.getName()));
+        txtName.setText(String.valueOf(spaceObject.getStarName()));
         txtDesignation.setText(String.valueOf(spaceObject.getMagnitude()));
-        txtMagnitude.setText(String.valueOf(spaceObject.getCID()));
+        txtcID.setText(String.valueOf(spaceObject.getcID()));
         
     }
 
@@ -80,11 +78,11 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        txtType = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtDesignation = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMagnitude = new javax.swing.JTextField();
+        txtcID = new javax.swing.JTextField();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -106,7 +104,7 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setText("Name");
+        jLabel1.setText("Star Name");
 
         jLabel2.setText("Magnitude");
 
@@ -137,10 +135,10 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
                         .addComponent(jLabel3))
                     .addGap(30, 30, 30)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtType)
+                        .addComponent(txtName)
                         .addComponent(txtDesignation)
-                        .addComponent(txtMagnitude, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(22, Short.MAX_VALUE)))
+                        .addComponent(txtcID, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(43, Short.MAX_VALUE)))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, okButton});
@@ -158,7 +156,7 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
                     .addGap(82, 82, 82)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1)
-                        .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
@@ -166,7 +164,7 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(txtMagnitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtcID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(83, Short.MAX_VALUE)))
         );
 
@@ -176,11 +174,11 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        int oID = spaceObject.getID();
-        String cName = txtType.getName();
-        double magnitude = Float.parseFloat(txtDesignation.getText());
-        int cID = Integer.parseInt(txtMagnitude.getText());
-        int ret = new SpaceObjectHandler().updateSpaceObject(oID, cName, magnitude, cID);
+        String oID = spaceObject.getoID();
+        String starName = txtName.getText();
+        float magnitude = Float.parseFloat(txtDesignation.getText());
+        String cID = txtcID.getText();
+        int ret = new SpaceObjectHandler().updateSpaceObject(oID, starName, magnitude, cID);
         if(ret != -1){
             doClose(RET_OK);
         }else{
@@ -217,8 +215,8 @@ public class FormUpdateSpaceObject extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField txtDesignation;
-    private javax.swing.JTextField txtMagnitude;
-    private javax.swing.JTextField txtType;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtcID;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;

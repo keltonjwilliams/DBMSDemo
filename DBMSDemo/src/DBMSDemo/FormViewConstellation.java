@@ -24,8 +24,9 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
     
     List<Constellation> constellations;
     
-        private void populateConstellation(){
-        String keyword = txtCO.getText();
+    private void populateConstellation(){
+        String keyword = txtKeyword.getText();
+        
         constellations = cHandler.loadConstellation(keyword);
         String columns[] = new String[] {"cID","cName","Area","Symbol"};
         DefaultTableModel tblModel = new DefaultTableModel(columns, 0){
@@ -38,8 +39,8 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
         constellations.forEach((constellation)->{
             //convert into a row and add
             tblModel.addRow(constellation.getRow());
-            refreshTableConstellation();
         });
+        tblConstellation.setModel(tblModel);
     }
     /**
      * Creates new form FormViewConstellation
@@ -60,12 +61,12 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        txtCO = new javax.swing.JTextField();
+        txtKeyword = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCO = new javax.swing.JTable();
+        tblConstellation = new javax.swing.JTable();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -78,11 +79,16 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("View Constellations");
+        setToolTipText("");
+
         jLabel1.setText("Search");
 
-        txtCO.addActionListener(new java.awt.event.ActionListener() {
+        txtKeyword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCOActionPerformed(evt);
+                txtKeywordActionPerformed(evt);
             }
         });
 
@@ -107,7 +113,7 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
             }
         });
 
-        tblCO.setModel(new javax.swing.table.DefaultTableModel(
+        tblConstellation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -118,12 +124,13 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblCO.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblConstellation.setToolTipText("");
+        tblConstellation.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCOMouseClicked(evt);
+                tblConstellationMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblCO);
+        jScrollPane1.setViewportView(tblConstellation);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -141,7 +148,7 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addGap(4, 4, 4)
-                        .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSearch)))
                 .addContainerGap())
@@ -152,7 +159,7 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSearch)
-                    .addComponent(txtCO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtKeyword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1)
                     .addComponent(btnRefresh))
                 .addGap(18, 18, 18)
@@ -165,9 +172,9 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCOActionPerformed
+    private void txtKeywordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtKeywordActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCOActionPerformed
+    }//GEN-LAST:event_txtKeywordActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         populateConstellation();
@@ -175,11 +182,11 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         //get the selected row
-        int selectedRow = tblCO.getSelectedRow();
+        int selectedRow = tblConstellation.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            int cID = (int) tblCO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting constellation id %d", cID));
+            String cID = (String) tblConstellation.getValueAt(selectedRow, 0);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting constellation id %s", cID));
             if (ret == JOptionPane.OK_OPTION){
                 cHandler.deleteConstellation(cID);
                 refreshTableConstellation();
@@ -193,11 +200,11 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
         refreshTableConstellation();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
-    private void tblCOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCOMouseClicked
+    private void tblConstellationMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblConstellationMouseClicked
         // if it is double clicked
         if(evt.getClickCount() == 2){
             //get the selected row
-            Constellation constellation = constellations.get(tblCO.getSelectedRow());
+            Constellation constellation = constellations.get(tblConstellation.getSelectedRow());
             //show form
                         FormUpdateConstellation formUpdateConstellations = new FormUpdateConstellation(null, true);
                         formUpdateConstellations.setConstellation(constellation);
@@ -208,7 +215,7 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
                                 refreshTableConstellation();
                             }
         }
-    }//GEN-LAST:event_tblCOMouseClicked
+    }//GEN-LAST:event_tblConstellationMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -218,7 +225,7 @@ public class FormViewConstellation extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCO;
-    private javax.swing.JTextField txtCO;
+    private javax.swing.JTable tblConstellation;
+    private javax.swing.JTextField txtKeyword;
     // End of variables declaration//GEN-END:variables
 }

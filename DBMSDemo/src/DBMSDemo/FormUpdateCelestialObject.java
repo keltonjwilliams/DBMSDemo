@@ -5,7 +5,7 @@
 package DBMSDemo;
 
 import bo.CelestialObject;
-import dao.COHandler;
+import dao.CelestialObjectHandler;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -38,9 +38,8 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
     public void setCelestialObject(CelestialObject celestialObject){
         this.celestialObject = celestialObject;
         //load the data to form
-        txtType.setText(String.valueOf(celestialObject.getType()));
-        txtDesignation.setText(celestialObject.getDesignation());
-        txtMagnitude.setText(String.valueOf(celestialObject.getMagnitude()));
+        txtType.setText(celestialObject.getoType());
+        txtDesignation.setText(String.valueOf(celestialObject.getDesignation()));
         
     }
 
@@ -79,12 +78,10 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
 
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
-        txtType = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txtDesignation = new javax.swing.JTextField();
+        txtType = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtMagnitude = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        txtDesignation = new javax.swing.JTextField();
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
@@ -106,17 +103,15 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Designation");
+        jLabel2.setText("oType");
 
-        txtDesignation.addActionListener(new java.awt.event.ActionListener() {
+        txtType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDesignationActionPerformed(evt);
+                txtTypeActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("Magnitude");
-
-        jLabel1.setText("Type");
+        jLabel3.setText("Designation");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,14 +128,12 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
                     .addGap(29, 29, 29)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jLabel2)
-                        .addComponent(jLabel1)
                         .addComponent(jLabel3))
                     .addGap(30, 30, 30)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(txtType)
-                        .addComponent(txtDesignation)
-                        .addComponent(txtMagnitude, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addContainerGap(30, Short.MAX_VALUE)))
+                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(53, Short.MAX_VALUE)))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, okButton});
@@ -155,18 +148,14 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(82, 82, 82)
+                    .addGap(120, 120, 120)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
                         .addComponent(txtType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel2)
-                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(18, 18, 18)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3)
-                        .addComponent(txtMagnitude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtDesignation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addContainerGap(83, Short.MAX_VALUE)))
         );
 
@@ -176,11 +165,10 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        int coID = celestialObject.getID();
-        int oType = Integer.parseInt(txtType.getText());
+        String oID = celestialObject.getoID();
+        String oType = txtType.getText();
         String designation = txtDesignation.getText();
-        float magnitude = Float.parseFloat(txtMagnitude.getText());
-        int ret = new COHandler().updateCO(coID, oType, designation, magnitude);
+        int ret = new CelestialObjectHandler().updateCelestialObject(oID, oType, designation);
         if(ret != -1){
             doClose(RET_OK);
         }else{
@@ -200,9 +188,9 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
         doClose(RET_CANCEL);
     }//GEN-LAST:event_closeDialog
 
-    private void txtDesignationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDesignationActionPerformed
+    private void txtTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDesignationActionPerformed
+    }//GEN-LAST:event_txtTypeActionPerformed
     
     private void doClose(int retStatus) {
         returnStatus = retStatus;
@@ -214,12 +202,10 @@ public class FormUpdateCelestialObject extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField txtDesignation;
-    private javax.swing.JTextField txtMagnitude;
     private javax.swing.JTextField txtType;
     // End of variables declaration//GEN-END:variables
 

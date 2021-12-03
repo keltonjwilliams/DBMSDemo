@@ -24,8 +24,9 @@ public class FormViewStar extends javax.swing.JInternalFrame {
     
     List<Star> stars;
     
-        private void populateStar(){
+    private void populateStar(){
         String keyword = txtCO.getText();
+        
         stars = cHandler.loadStar(keyword);
         String columns[] = new String[] {"oID","Temperature","MSID"};
         DefaultTableModel tblModel = new DefaultTableModel(columns, 0){
@@ -38,8 +39,8 @@ public class FormViewStar extends javax.swing.JInternalFrame {
         stars.forEach((constellation)->{
             //convert into a row and add
             tblModel.addRow(constellation.getRow());
-            refreshTableStar();
         });
+        tblStar.setModel(tblModel);
     }
 
     /**
@@ -60,14 +61,18 @@ public class FormViewStar extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCO = new javax.swing.JTable();
+        tblStar = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         txtCO = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnRefresh = new javax.swing.JButton();
 
-        tblCO.setModel(new javax.swing.table.DefaultTableModel(
+        setClosable(true);
+        setIconifiable(true);
+        setTitle("View Stars");
+
+        tblStar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -78,12 +83,12 @@ public class FormViewStar extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tblCO.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblStar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblCOMouseClicked(evt);
+                tblStarMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblCO);
+        jScrollPane1.setViewportView(tblStar);
 
         jLabel1.setText("Search");
 
@@ -154,11 +159,11 @@ public class FormViewStar extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblCOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCOMouseClicked
+    private void tblStarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStarMouseClicked
         // if it is double clicked
         if(evt.getClickCount() == 2){
             //get the selected row
-            Star mainSeq = stars.get(tblCO.getSelectedRow());
+            Star mainSeq = stars.get(tblStar.getSelectedRow());
             //show form
             FormUpdateStar formUpdateStars = new FormUpdateStar(null, true);
             formUpdateStars.setStar(mainSeq);
@@ -169,7 +174,7 @@ public class FormViewStar extends javax.swing.JInternalFrame {
                 refreshTableStar();
             }
         }
-    }//GEN-LAST:event_tblCOMouseClicked
+    }//GEN-LAST:event_tblStarMouseClicked
 
     private void txtCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCOActionPerformed
         // TODO add your handling code here:
@@ -181,11 +186,11 @@ public class FormViewStar extends javax.swing.JInternalFrame {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         //get the selected row
-        int selectedRow = tblCO.getSelectedRow();
+        int selectedRow = tblStar.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            int cID = (int) tblCO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting star id %d", cID));
+            String cID = (String) tblStar.getValueAt(selectedRow, 0);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting star id %s", cID));
             if (ret == JOptionPane.OK_OPTION){
                 cHandler.deleteStar(cID);
                 refreshTableStar();
@@ -206,7 +211,7 @@ public class FormViewStar extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblCO;
+    private javax.swing.JTable tblStar;
     private javax.swing.JTextField txtCO;
     // End of variables declaration//GEN-END:variables
 }

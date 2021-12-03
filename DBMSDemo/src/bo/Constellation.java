@@ -1,5 +1,7 @@
 package bo;
 
+import java.util.Vector;
+
 public class Constellation {
 
     private String cID;
@@ -12,6 +14,15 @@ public class Constellation {
         this.cName = cName;
         this.area = area;
         this.symbol = symbol;
+    }
+    
+    public Vector getRow() {
+        Vector v = new Vector();
+        v.add(cID);
+        v.add(cName);
+        v.add(area);
+        v.add(symbol);
+        return v;
     }
     
     public String getcID() {

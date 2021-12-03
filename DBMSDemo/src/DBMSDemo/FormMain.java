@@ -23,16 +23,49 @@ public class FormMain extends javax.swing.JFrame {
      * Creates new form FormMain
      */
     FormLogin formLogin = new FormLogin();
+    
     FormAddCelestialObject formAddco = new FormAddCelestialObject();
     FormViewCelestialObject formViewco = new FormViewCelestialObject();
+    
+    FormAddConstellation formAddC = new FormAddConstellation();
+    FormViewConstellation formViewC = new FormViewConstellation();
+    
+    FormAddMainSeq formAddMS = new FormAddMainSeq();
+    FormViewMainSeq formViewMS = new FormViewMainSeq();
+    
+    FormAddSeason formAddSeason = new FormAddSeason();
+    FormViewSeason formViewSeason = new FormViewSeason();
+    
+    FormAddSpaceObject formAddSO = new FormAddSpaceObject();
+    FormViewSpaceObject formViewSO = new FormViewSpaceObject();
+    
+    FormAddStar formAddStar = new FormAddStar();
+    FormViewStar formViewStar = new FormViewStar();
+    
     Map<String, JInternalFrame> forms =  new HashMap<>();
             
     
     public FormMain() {
         initComponents();
         forms.put("formLogin", formLogin);
+        
         forms.put("formAddCO", formAddco);
         forms.put("formViewCO", formViewco);
+        
+        forms.put("formAddC", formAddC);
+        forms.put("formViewC", formViewC);
+        
+        forms.put("formAddMS", formAddMS);
+        forms.put("formViewMS", formViewMS);
+        
+        forms.put("formAddSeason", formAddSeason);
+        forms.put("formViewSeason", formViewSeason);
+        
+        forms.put("formAddSO", formAddSO);
+        forms.put("formViewSO", formViewSO);
+        
+        forms.put("formAddStar", formAddStar);
+        forms.put("formViewStar", formViewStar);
         
         forms.values().forEach((form) -> {
             jdpContainer.add(form);
@@ -87,29 +120,22 @@ public class FormMain extends javax.swing.JFrame {
         mnuManage = new javax.swing.JMenu();
         mniCO = new javax.swing.JMenu();
         mniAddCO = new javax.swing.JMenuItem();
-        mniUpdateCO = new javax.swing.JMenuItem();
-        mniDeleteCO = new javax.swing.JMenuItem();
         mniViewCO = new javax.swing.JMenuItem();
         mniC = new javax.swing.JMenu();
         mniAddC = new javax.swing.JMenuItem();
-        mniUpdateC = new javax.swing.JMenuItem();
-        mniDeleteC = new javax.swing.JMenuItem();
         mniViewC = new javax.swing.JMenuItem();
         mniMS = new javax.swing.JMenu();
-        mniAddCO2 = new javax.swing.JMenuItem();
-        mniUpdateCO2 = new javax.swing.JMenuItem();
-        mniDeleteCO2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        mniAddMS = new javax.swing.JMenuItem();
+        mniViewMS = new javax.swing.JMenuItem();
+        mniSeason = new javax.swing.JMenu();
+        mniAddSeason = new javax.swing.JMenuItem();
+        mniViewSeason = new javax.swing.JMenuItem();
         mniSO = new javax.swing.JMenu();
-        mniAddCO3 = new javax.swing.JMenuItem();
-        mniUpdateCO3 = new javax.swing.JMenuItem();
-        mniDeleteCO3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        mniS = new javax.swing.JMenu();
-        mniAddCO4 = new javax.swing.JMenuItem();
-        mniUpdateCO4 = new javax.swing.JMenuItem();
-        mniDeleteCO4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        mniAddSO = new javax.swing.JMenuItem();
+        mniViewSO = new javax.swing.JMenuItem();
+        mniStar = new javax.swing.JMenu();
+        mniAddStar = new javax.swing.JMenuItem();
+        mniViewStar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -156,17 +182,6 @@ public class FormMain extends javax.swing.JFrame {
         });
         mniCO.add(mniAddCO);
 
-        mniUpdateCO.setText("Update");
-        mniUpdateCO.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUpdateCOActionPerformed(evt);
-            }
-        });
-        mniCO.add(mniUpdateCO);
-
-        mniDeleteCO.setText("Delete");
-        mniCO.add(mniDeleteCO);
-
         mniViewCO.setText("View");
         mniViewCO.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,84 +202,95 @@ public class FormMain extends javax.swing.JFrame {
         });
         mniC.add(mniAddC);
 
-        mniUpdateC.setText("Update");
-        mniUpdateC.addActionListener(new java.awt.event.ActionListener() {
+        mniViewC.setText("View");
+        mniViewC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUpdateCActionPerformed(evt);
+                mniViewCActionPerformed(evt);
             }
         });
-        mniC.add(mniUpdateC);
-
-        mniDeleteC.setText("Delete");
-        mniC.add(mniDeleteC);
-
-        mniViewC.setText("View");
         mniC.add(mniViewC);
 
         mnuManage.add(mniC);
 
         mniMS.setText("MainSeq");
 
-        mniAddCO2.setText("Add");
-        mniMS.add(mniAddCO2);
-
-        mniUpdateCO2.setText("Update");
-        mniUpdateCO2.addActionListener(new java.awt.event.ActionListener() {
+        mniAddMS.setText("Add");
+        mniAddMS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUpdateCO2ActionPerformed(evt);
+                mniAddMSActionPerformed(evt);
             }
         });
-        mniMS.add(mniUpdateCO2);
+        mniMS.add(mniAddMS);
 
-        mniDeleteCO2.setText("Delete");
-        mniMS.add(mniDeleteCO2);
-
-        jMenuItem3.setText("View");
-        mniMS.add(jMenuItem3);
+        mniViewMS.setText("View");
+        mniViewMS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniViewMSActionPerformed(evt);
+            }
+        });
+        mniMS.add(mniViewMS);
 
         mnuManage.add(mniMS);
 
-        mniSO.setText("SpaceObject");
+        mniSeason.setText("Season");
 
-        mniAddCO3.setText("Add");
-        mniSO.add(mniAddCO3);
-
-        mniUpdateCO3.setText("Update");
-        mniUpdateCO3.addActionListener(new java.awt.event.ActionListener() {
+        mniAddSeason.setText("Add");
+        mniAddSeason.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUpdateCO3ActionPerformed(evt);
+                mniAddSeasonActionPerformed(evt);
             }
         });
-        mniSO.add(mniUpdateCO3);
+        mniSeason.add(mniAddSeason);
 
-        mniDeleteCO3.setText("Delete");
-        mniSO.add(mniDeleteCO3);
+        mniViewSeason.setText("View");
+        mniViewSeason.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniViewSeasonActionPerformed(evt);
+            }
+        });
+        mniSeason.add(mniViewSeason);
 
-        jMenuItem4.setText("View");
-        mniSO.add(jMenuItem4);
+        mnuManage.add(mniSeason);
+
+        mniSO.setText("SpaceObject");
+
+        mniAddSO.setText("Add");
+        mniAddSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniAddSOActionPerformed(evt);
+            }
+        });
+        mniSO.add(mniAddSO);
+
+        mniViewSO.setText("View");
+        mniViewSO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniViewSOActionPerformed(evt);
+            }
+        });
+        mniSO.add(mniViewSO);
 
         mnuManage.add(mniSO);
 
-        mniS.setText("Star");
+        mniStar.setText("Star");
 
-        mniAddCO4.setText("Add");
-        mniS.add(mniAddCO4);
-
-        mniUpdateCO4.setText("Update");
-        mniUpdateCO4.addActionListener(new java.awt.event.ActionListener() {
+        mniAddStar.setText("Add");
+        mniAddStar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mniUpdateCO4ActionPerformed(evt);
+                mniAddStarActionPerformed(evt);
             }
         });
-        mniS.add(mniUpdateCO4);
+        mniStar.add(mniAddStar);
 
-        mniDeleteCO4.setText("Delete");
-        mniS.add(mniDeleteCO4);
+        mniViewStar.setText("View");
+        mniViewStar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniViewStarActionPerformed(evt);
+            }
+        });
+        mniStar.add(mniViewStar);
 
-        jMenuItem5.setText("View");
-        mniS.add(jMenuItem5);
-
-        mnuManage.add(mniS);
+        mnuManage.add(mniStar);
 
         jMenuBar1.add(mnuManage);
 
@@ -277,28 +303,8 @@ public class FormMain extends javax.swing.JFrame {
         showForm("formLogin", false);
     }//GEN-LAST:event_mniLoginActionPerformed
 
-    private void mniUpdateCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCOActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUpdateCOActionPerformed
-
-    private void mniUpdateCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUpdateCActionPerformed
-
-    private void mniUpdateCO2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUpdateCO2ActionPerformed
-
-    private void mniUpdateCO3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUpdateCO3ActionPerformed
-
-    private void mniUpdateCO4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniUpdateCO4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mniUpdateCO4ActionPerformed
-
     private void mniAddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddCActionPerformed
-        
+        showForm("formAddC", false);
     }//GEN-LAST:event_mniAddCActionPerformed
 
     private void mniAddCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddCOActionPerformed
@@ -308,6 +314,42 @@ public class FormMain extends javax.swing.JFrame {
     private void mniViewCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewCOActionPerformed
         showForm("formViewCO", false);
     }//GEN-LAST:event_mniViewCOActionPerformed
+
+    private void mniViewCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewCActionPerformed
+        showForm("formViewC", false);
+    }//GEN-LAST:event_mniViewCActionPerformed
+
+    private void mniAddSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddSOActionPerformed
+        showForm("formAddSO", false);
+    }//GEN-LAST:event_mniAddSOActionPerformed
+
+    private void mniViewSOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewSOActionPerformed
+        showForm("formViewSO", false);
+    }//GEN-LAST:event_mniViewSOActionPerformed
+
+    private void mniViewStarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewStarActionPerformed
+        showForm("formViewStar", false);
+    }//GEN-LAST:event_mniViewStarActionPerformed
+
+    private void mniViewSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewSeasonActionPerformed
+        showForm("formViewSeason", false);
+    }//GEN-LAST:event_mniViewSeasonActionPerformed
+
+    private void mniAddMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddMSActionPerformed
+        showForm("formAddMS", false);
+    }//GEN-LAST:event_mniAddMSActionPerformed
+
+    private void mniViewMSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniViewMSActionPerformed
+        showForm("formViewMS", false);
+    }//GEN-LAST:event_mniViewMSActionPerformed
+
+    private void mniAddSeasonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddSeasonActionPerformed
+        showForm("formAddSeason", false);
+    }//GEN-LAST:event_mniAddSeasonActionPerformed
+
+    private void mniAddStarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddStarActionPerformed
+        showForm("formAddStar", false);
+    }//GEN-LAST:event_mniAddStarActionPerformed
     
     // End of variables declaration                   
     /**
@@ -349,35 +391,28 @@ public class FormMain extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JDesktopPane jdpContainer;
     private javax.swing.JMenuItem mniAddC;
     private javax.swing.JMenuItem mniAddCO;
-    private javax.swing.JMenuItem mniAddCO2;
-    private javax.swing.JMenuItem mniAddCO3;
-    private javax.swing.JMenuItem mniAddCO4;
+    private javax.swing.JMenuItem mniAddMS;
+    private javax.swing.JMenuItem mniAddSO;
+    private javax.swing.JMenuItem mniAddSeason;
+    private javax.swing.JMenuItem mniAddStar;
     private javax.swing.JMenu mniC;
     private javax.swing.JMenu mniCO;
-    private javax.swing.JMenuItem mniDeleteC;
-    private javax.swing.JMenuItem mniDeleteCO;
-    private javax.swing.JMenuItem mniDeleteCO2;
-    private javax.swing.JMenuItem mniDeleteCO3;
-    private javax.swing.JMenuItem mniDeleteCO4;
     private javax.swing.JMenuItem mniExit;
     private javax.swing.JMenuItem mniLogin;
     private javax.swing.JMenuItem mniLogout;
     private javax.swing.JMenu mniMS;
-    private javax.swing.JMenu mniS;
     private javax.swing.JMenu mniSO;
-    private javax.swing.JMenuItem mniUpdateC;
-    private javax.swing.JMenuItem mniUpdateCO;
-    private javax.swing.JMenuItem mniUpdateCO2;
-    private javax.swing.JMenuItem mniUpdateCO3;
-    private javax.swing.JMenuItem mniUpdateCO4;
+    private javax.swing.JMenu mniSeason;
+    private javax.swing.JMenu mniStar;
     private javax.swing.JMenuItem mniViewC;
     private javax.swing.JMenuItem mniViewCO;
+    private javax.swing.JMenuItem mniViewMS;
+    private javax.swing.JMenuItem mniViewSO;
+    private javax.swing.JMenuItem mniViewSeason;
+    private javax.swing.JMenuItem mniViewStar;
     private javax.swing.JMenu mnuFile;
     private javax.swing.JMenu mnuManage;
     // End of variables declaration//GEN-END:variables
