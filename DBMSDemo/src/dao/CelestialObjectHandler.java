@@ -43,13 +43,13 @@ public class CelestialObjectHandler {
     }
 
     public int addCelestialObject(String oID, String oType, String designation) {
-        String cmdTemplate = "insert into CelestialObject(oID, oType, designation) values('%s','%s','%s')";
+        String cmdTemplate = "insert into CelestialObject(oID, oType, designation) values('%s','%s','%s');";
         String cmd = String.format(cmdTemplate, oID, oType, designation);
         return sqlUtil.executeUpdate(cmd);
     }
     
     public int deleteCelestialObject(String oID){
-        String cmdTemplate = "delete from CelestialObject where oID = '%s;'";
+        String cmdTemplate = "delete from CelestialObject where oID = '%s';";
         String cmd = String.format(cmdTemplate, oID);
         return sqlUtil.executeUpdate(cmd);
     }
@@ -62,7 +62,7 @@ public class CelestialObjectHandler {
     
     public List<CelestialObject> loadCelestialObjects(String keyword) {
         List<CelestialObject> co = new ArrayList<>();
-        String cmdTemplate = "select oID, oType, designation from CelestialObject where oID like '%s'";
+        String cmdTemplate = "select oID, oType, designation from CelestialObject where oID like '%s';";
         String cmd = String.format(cmdTemplate, "%" + keyword + "%");
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {

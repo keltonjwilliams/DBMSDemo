@@ -23,6 +23,7 @@ public class FormMain extends javax.swing.JFrame {
      * Creates new form FormMain
      */
     FormLogin formLogin = new FormLogin();
+    FormLogout formLogout  = new FormLogout();
     
     FormAddCelestialObject formAddco = new FormAddCelestialObject();
     FormViewCelestialObject formViewco = new FormViewCelestialObject();
@@ -48,6 +49,7 @@ public class FormMain extends javax.swing.JFrame {
     public FormMain() {
         initComponents();
         forms.put("formLogin", formLogin);
+        forms.put("formLogout", formLogout);
         
         forms.put("formAddCO", formAddco);
         forms.put("formViewCO", formViewco);
@@ -163,9 +165,19 @@ public class FormMain extends javax.swing.JFrame {
         mnuFile.add(mniLogin);
 
         mniLogout.setText("Logout");
+        mniLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniLogoutActionPerformed(evt);
+            }
+        });
         mnuFile.add(mniLogout);
 
         mniExit.setText("Exit");
+        mniExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mniExitActionPerformed(evt);
+            }
+        });
         mnuFile.add(mniExit);
 
         jMenuBar1.add(mnuFile);
@@ -350,6 +362,14 @@ public class FormMain extends javax.swing.JFrame {
     private void mniAddStarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAddStarActionPerformed
         showForm("formAddStar", false);
     }//GEN-LAST:event_mniAddStarActionPerformed
+
+    private void mniLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniLogoutActionPerformed
+        showForm("formLogout", false);
+    }//GEN-LAST:event_mniLogoutActionPerformed
+
+    private void mniExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_mniExitActionPerformed
     
     // End of variables declaration                   
     /**

@@ -42,7 +42,7 @@ public class SeasonHandler {
     }
     
     public int addSeason(String seasonType, String cID) {
-        String cmdTemplate = "insert into Seasons(seasonType, cID) values('%s','%s')";
+        String cmdTemplate = "insert into Seasons(seasonType, cID) values('%s','%s');";
         String cmd = String.format(cmdTemplate, seasonType, cID);
         return sqlUtil.executeUpdate(cmd);
     }

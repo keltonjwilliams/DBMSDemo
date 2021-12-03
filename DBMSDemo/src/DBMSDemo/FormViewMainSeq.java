@@ -35,9 +35,9 @@ public class FormViewMainSeq extends javax.swing.JInternalFrame {
             }
         };
         
-        mainSeqs.forEach((constellation)->{
+        mainSeqs.forEach((ms)->{
             //convert into a row and add
-            tblModel.addRow(constellation.getRow());
+            tblModel.addRow(ms.getRow());
         });
         tblMS.setModel(tblModel);
     }

@@ -25,7 +25,7 @@ public class SpaceObjectHandler {
     }
     
     public int addSpaceObject(String oID, String starName, float magnitude, String cID) {
-        String cmdTemplate = "insert into SpaceObject(oID, starName, magnitude, cID) values('%s','%s','%f','%s')";
+        String cmdTemplate = "insert into SpaceObject(oID, starName, magnitude, cID) values('%s','%s','%f','%s');";
         String cmd = String.format(cmdTemplate, oID, starName, magnitude, cID);
         return sqlUtil.executeUpdate(cmd);
     }
@@ -44,7 +44,7 @@ public class SpaceObjectHandler {
     
     public List<SpaceObject> loadSpaceObject(String keyword){
         List<SpaceObject> so = new ArrayList<>();
-        String cmdTemplate = "select oID, starName, magnitude, cID from SpaceObject where oID like '%s'";
+        String cmdTemplate = "select oID, starName, magnitude, cID from SpaceObject where oID like '%s';";
         String cmd = String.format(cmdTemplate, "%" + keyword + "%");
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {

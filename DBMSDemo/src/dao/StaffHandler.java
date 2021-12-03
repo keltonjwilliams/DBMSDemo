@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.SQLUtil;
 import util.PasswordEncryptor;
+import util.SQLUtil;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -26,14 +26,15 @@ public class StaffHandler {
     }
     
     public Staff login(String username, String password) {
-        Staff stf = null;
         password = PasswordEncryptor.encryptPassword(password);
+        Staff stf = null;
         try {
-            String cmd = String.format("select sID, sName from Staff where username = '%s' and password = '%s'", username, password);
+            String cmd = String.format("select sID, sName from Staff where username = '%s' and password = '%s';", username, password);
             ResultSet rs = sqlUtil.executeQuery(cmd);
             if (rs.next()) {
                 int sID = rs.getInt("sID");
                 String sName = rs.getString("sName");
+                System.out.println(rs.getString("password"));
                 stf = new Staff(sID, sName);
             }
         } catch (SQLException ex) {

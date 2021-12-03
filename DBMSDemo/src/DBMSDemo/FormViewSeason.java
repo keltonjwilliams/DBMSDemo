@@ -18,13 +18,13 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
 
     private SeasonHandler sh = new SeasonHandler();
     
-    private void refreshTableConstellation(){
-        populateConstellation();
+    private void refreshTableSeason(){
+        populateSeason();
     }
     
     List<Season> seasons;
     
-    private void populateConstellation(){
+    private void populateSeason(){
         String keyword = txtKeyword.getText();
         
         seasons = sh.loadSeason(keyword);
@@ -47,7 +47,7 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
      */
     public FormViewSeason() {
         initComponents();
-        populateConstellation();
+        populateSeason();
     }
 
     /**
@@ -177,7 +177,7 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtKeywordActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        populateConstellation();
+        populateSeason();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -189,7 +189,7 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
             int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting season id %s", cID));
             if (ret == JOptionPane.OK_OPTION){
                 sh.deleteSeason(cID);
-                refreshTableConstellation();
+                refreshTableSeason();
             }
         }else{
             JOptionPane.showMessageDialog(this, "Please select a row to delete!");
@@ -197,7 +197,7 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        refreshTableConstellation();
+        refreshTableSeason();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void tblSeasonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSeasonMouseClicked
@@ -212,7 +212,7 @@ public class FormViewSeason extends javax.swing.JInternalFrame {
 
                         if(formUpdateSeason.getReturnStatus() == FormUpdateConstellation.RET_OK){
                                 //refresh table
-                                refreshTableConstellation();
+                                refreshTableSeason();
                             }
         }
     }//GEN-LAST:event_tblSeasonMouseClicked

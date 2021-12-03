@@ -14,6 +14,6 @@ import bo.Staff;
  */
 public class GlobalData {
     //public static Staff stf = null;
-    public static Staff stf = new Staff(1, "A");
+    public static Staff stf = /*null;*/new Staff(1, "A");
     
 }

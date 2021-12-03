@@ -36,9 +36,9 @@ public class FormViewStar extends javax.swing.JInternalFrame {
             }
         };
         
-        stars.forEach((constellation)->{
+        stars.forEach((star)->{
             //convert into a row and add
-            tblModel.addRow(constellation.getRow());
+            tblModel.addRow(star.getRow());
         });
         tblStar.setModel(tblModel);
     }

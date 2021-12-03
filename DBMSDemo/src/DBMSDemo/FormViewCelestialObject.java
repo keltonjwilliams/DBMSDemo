@@ -18,13 +18,13 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
 
     private CelestialObjectHandler cHandler = new CelestialObjectHandler();
     
-    private void refreshTableConstellation(){
-        populateConstellation();
+    private void refreshCelestialObject(){
+        populateCelestialObject();
     }
     
     List<CelestialObject> co;
     
-    private void populateConstellation(){
+    private void populateCelestialObject(){
         String keyword = txtKeyword.getText();
         
         co = cHandler.loadCelestialObjects(keyword);
@@ -36,18 +36,15 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
             }
         };
         
-        co.forEach((constellation)->{
+        co.forEach((so)->{
             //convert into a row and add
-            tblModel.addRow(constellation.getRow());
+            tblModel.addRow(so.getRow());
         });
         tblCO.setModel(tblModel);
     }
-    /**
-     * Creates new form FormViewConstellation
-     */
     public FormViewCelestialObject() {
         initComponents();
-        populateConstellation();
+        populateCelestialObject();
     }
 
     /**
@@ -177,7 +174,7 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtKeywordActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        populateConstellation();
+        populateCelestialObject();
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -185,11 +182,11 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
         int selectedRow = tblCO.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            String cID = (String) tblCO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting CelestialObject id %s", cID));
+            String oID = (String) tblCO.getValueAt(selectedRow, 0);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting CelestialObject id %s", oID));
             if (ret == JOptionPane.OK_OPTION){
-                cHandler.deleteCelestialObject(cID);
-                refreshTableConstellation();
+                cHandler.deleteCelestialObject(oID);
+                refreshCelestialObject();
             }
         }else{
             JOptionPane.showMessageDialog(this, "Please select a row to delete!");
@@ -197,7 +194,7 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        refreshTableConstellation();
+        refreshCelestialObject();
     }//GEN-LAST:event_btnRefreshActionPerformed
 
     private void tblCOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCOMouseClicked
@@ -210,9 +207,9 @@ public class FormViewCelestialObject extends javax.swing.JInternalFrame {
                         formUpdateCelestialObject.setCelestialObject(celestialObject);
                         formUpdateCelestialObject.setVisible(true);
 
-                        if(formUpdateCelestialObject.getReturnStatus() == FormUpdateConstellation.RET_OK){
+                        if(formUpdateCelestialObject.getReturnStatus() == FormUpdateSpaceObject.RET_OK){
                                 //refresh table
-                                refreshTableConstellation();
+                                refreshCelestialObject();
                             }
         }
     }//GEN-LAST:event_tblCOMouseClicked

@@ -44,7 +44,7 @@ public class ConstellationHandler {
     }
     
     public int addConstellation(String cID, String cName, String area, String symbol) {
-        String cmdTemplate = "insert into Constellations(cID, cName, area, symbol) values('%s','%s','%s','%s')";
+        String cmdTemplate = "insert into Constellations(cID, cName, area, symbol) values('%s','%s','%s','%s');";
         String cmd = String.format(cmdTemplate, cID, cName, area, symbol);
         return sqlUtil.executeUpdate(cmd);
     }

@@ -43,13 +43,13 @@ public class StarHandler {
     }
     
     public int addStar(String oID, int temperature, String MSID) {
-        String cmdTemplate = "insert into Star(oID, temperature, MSID) values('%s','%d','%s')";
+        String cmdTemplate = "insert into Star(oID, temperature, MSID) values('%s','%d','%s');";
         String cmd = String.format(cmdTemplate, oID, temperature, MSID);
         return sqlUtil.executeUpdate(cmd);
     }
     
     public int deleteStar(String MSID){
-        String cmdTemplate = "delete from Star where oID = '%d';";
+        String cmdTemplate = "delete from Star where oID = '%s';";
         String cmd = String.format(cmdTemplate, MSID);
         return sqlUtil.executeUpdate(cmd);
     }
@@ -62,7 +62,7 @@ public class StarHandler {
     
     public List<Star> loadStar(String keyword){
         List<Star> r = new ArrayList<>();
-        String cmdTemplate = "select oID, temperature, MSID from Star where oID like '%s'";
+        String cmdTemplate = "select oID, temperature, MSID from Star where oID like '%s';";
         String cmd = String.format(cmdTemplate, "%" + keyword + "%");
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {

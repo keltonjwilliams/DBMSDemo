@@ -167,10 +167,11 @@ public class FormViewSpaceObject extends javax.swing.JInternalFrame {
         int selectedRow = tblSO.getSelectedRow();
         if(selectedRow != -1){
             //perform the delete
-            String cID = (String) tblSO.getValueAt(selectedRow, 0);
-            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting space object id %s", cID));
+            String oID = (String) tblSO.getValueAt(selectedRow, 0);
+            int ret = JOptionPane.showConfirmDialog(this, String.format("Deleting space object id '%s'", oID));
             if (ret == JOptionPane.OK_OPTION){
-                cHandler.deleteSpaceObject(cID);
+                cHandler.deleteSpaceObject(oID);
+                refreshTableSpaceObject();
             }
         }else{
             JOptionPane.showMessageDialog(this, "Please select a row to delete!");

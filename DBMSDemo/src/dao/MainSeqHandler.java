@@ -43,13 +43,13 @@ public class MainSeqHandler {
     }
     
     public int addMainSeq(String MSID, double lyDistance, String spectralType) {
-        String cmdTemplate = "insert into MainSeq(MSID, lyDistance, spectralType) values('%s','%d','%s')";
+        String cmdTemplate = "insert into MainSeq(MSID, lyDistance, spectralType) values('%s','%f','%s');";
         String cmd = String.format(cmdTemplate, MSID, lyDistance, spectralType);
         return sqlUtil.executeUpdate(cmd);
     }
     
     public int deleteMainSeq(String MSID){
-        String cmdTemplate = "delete from MainSeq where MSID = %s;";
+        String cmdTemplate = "delete from MainSeq where MSID = '%s';";
         String cmd = String.format(cmdTemplate, MSID);
         return sqlUtil.executeUpdate(cmd);
     }
@@ -62,7 +62,7 @@ public class MainSeqHandler {
     
     public List<MainSeq> loadMainSeq(String keyword){
         List<MainSeq> r = new ArrayList<>();
-        String cmdTemplate = "select MSID, lyDistance, spectralType from MainSeq where MSID like '%s'";
+        String cmdTemplate = "select MSID, lyDistance, spectralType from MainSeq where MSID like '%s';";
         String cmd = String.format(cmdTemplate, "%" + keyword + "%");
         ResultSet rs = sqlUtil.executeQuery(cmd);
         try {

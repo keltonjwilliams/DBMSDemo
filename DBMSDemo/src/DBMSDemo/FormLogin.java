@@ -105,7 +105,6 @@ public class FormLogin extends javax.swing.JInternalFrame {
         // Get username and password
         String username = txtUsername.getText();
         String password = new String(txtPassword.getPassword());
-        password = PasswordEncryptor.encryptPassword(password);
         Staff stf = new StaffHandler().login(username, password);
         if (stf != null) {
             GlobalData.stf = stf;

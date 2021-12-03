@@ -150,7 +150,7 @@ public class FormAddConstellation extends javax.swing.JInternalFrame {
         String symbol = txtSymbol.getText();
         int ret = new ConstellationHandler().addConstellation(cID, cName, area, symbol);
         if (ret == -1) {
-            JOptionPane.showMessageDialog(this, "Failed to add CelestialObject");
+            JOptionPane.showMessageDialog(this, "Failed to add Constellation");
         } else {
             txtcID.setText(null);
             txtName.setText(null);
